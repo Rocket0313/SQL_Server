@@ -1,7 +1,18 @@
-length
-Strlen
-instr
-trim
-nvl
-nvl1
-nvl2
+SUBSTR : The SUBSTR (or SUBSTRING in some SQL dialects) function is used to extract a substring from a string
+  syntax: SUBSTR(string, start_position, length)
+    Ex: substr('Hello world' ,3,7) 
+        output : llo wor
+Note: substr('hello world',0,5) // hello 
+      substr('hello world',2,0) // NULL
+      select  substr('Hello world' ,-5,2) from dual; // wo
+################################################################################################################
+
+INSTR : The INSTR function is used to find the position of a substring within a string
+  Syntax: instr('string',counting starts,occurance)
+    EX:- SELECT INSTR(product_name, 'book') AS position FROM products
+
+product_name
+Notebook  \\ 5
+Bookcase   \\ 1
+Cookbook    \\ 1
+Pen          \\ 0
