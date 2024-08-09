@@ -1,0 +1,74 @@
+Categories of Single-Row Functions
+String Functions:
+
+UPPER(): Converts a string to uppercase.
+sql
+Copy code
+SELECT UPPER('hello') AS uppercase_string;
+-- Result: HELLO
+LOWER(): Converts a string to lowercase.
+sql
+Copy code
+SELECT LOWER('HELLO') AS lowercase_string;
+-- Result: hello
+SUBSTR(): Extracts a substring from a string.
+sql
+Copy code
+SELECT SUBSTR('Hello, World!', 8, 5) AS substring;
+-- Result: World
+INSTR(): Finds the position of a substring within a string.
+sql
+Copy code
+SELECT INSTR('Hello, World!', 'World') AS position;
+-- Result: 8
+Numeric Functions:
+
+ROUND(): Rounds a number to a specified number of decimal places.
+sql
+Copy code
+SELECT ROUND(123.4567, 2) AS rounded_number;
+-- Result: 123.46
+TRUNC(): Truncates a number to a specified number of decimal places (available in some databases like Oracle).
+sql
+Copy code
+SELECT TRUNC(123.4567, 2) AS truncated_number;
+-- Result: 123.45
+ABS(): Returns the absolute value of a number.
+sql
+Copy code
+SELECT ABS(-123) AS absolute_value;
+-- Result: 123
+Date Functions:
+
+SYSDATE(): Returns the current date and time (Oracle-specific).
+sql
+Copy code
+SELECT SYSDATE FROM dual;
+-- Result: 09-AUG-24 (current date)
+CURRENT_DATE: Returns the current date.
+sql
+Copy code
+SELECT CURRENT_DATE;
+-- Result: 2024-08-09 (current date)
+MONTHS_BETWEEN(): Calculates the number of months between two dates (Oracle-specific).
+sql
+Copy code
+SELECT MONTHS_BETWEEN('2024-08-09', '2023-08-09') AS months_between;
+-- Result: 12
+Conversion Functions:
+
+TO_CHAR(): Converts a number or date to a string (Oracle-specific).
+sql
+Copy code
+SELECT TO_CHAR(SYSDATE, 'YYYY-MM-DD') AS date_string FROM dual;
+-- Result: 2024-08-09
+TO_DATE(): Converts a string to a date (Oracle-specific).
+sql
+Copy code
+SELECT TO_DATE('2024-08-09', 'YYYY-MM-DD') AS date_value FROM dual;
+-- Result: 09-AUG-24
+CAST(): Converts a value from one data type to another.
+sql
+Copy code
+SELECT CAST('123' AS INTEGER) AS integer_value;
+-- Result: 123
