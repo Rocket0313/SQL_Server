@@ -68,5 +68,5 @@ SELECT TO_DATE('2024-08-09', 'YYYY-MM-DD') AS date_value FROM dual;
 
 # CAST(): Converts a value from one data type to another.
 
-SELECT CAST('123' AS INTEGER) AS integer_value;
--- Result: 123
+select cast('12345' as int) from dual;
+-- Result: 12345
