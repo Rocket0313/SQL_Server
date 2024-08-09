@@ -1,6 +1,10 @@
 Categories of Single-Row Functions
 String Functions:
 
+# LTRIM & RTRIM
+select LTRIM('11111111112345','1') from dual             Select RTRIM('123455555555','5') from dual;
+----Result: 2345                                          --Result: 1234
+
 # UPPER(): Converts a string to uppercase.
 
 SELECT UPPER('hello') AS uppercase_string;
