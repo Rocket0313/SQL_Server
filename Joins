@@ -1,0 +1,23 @@
+Interview Question
+
+LEFT JOIN & RIGHT JOINS
+
+#########################################################
+Select * from
+emp,dept
+where emp.deptno (+) = dept.deptno \\ Left join
+
+OR 
+
+Select * from emp e
+left join dept d on e.deptno = d.deptno
+#######################################################
+
+Select * from
+emp,dept
+where emp.deptno = dept.deptno  (+) \\ Right join
+
+OR
+
+Select * from emp e
+Right join dept d on e.deptno = d.deptno
