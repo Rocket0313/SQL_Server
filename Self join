@@ -1,0 +1,33 @@
+Self Join : Table join with same table called self join
+
+select m_empno,m_ename,m_job,count(*) as no_of_emp from 
+(select e.ename,e.empno,e.job,m.ename m_ename,m.empno as m_empno,m.job as m_job from emp e
+left join emp m on e.mgr = m.empno) temp1
+group by m_empno,m_ename,m_job
+having (count(*)>=2)
+order by count(*) desc
+
+FUll_Output
+
+M_EMPNO	M_ENAME	M_JOB   NO_OF_EMP
+7698	  BLAKE	  MANAGER	   5
+7839	  KING	  PRESIDENT	 3
+7566	  JONES	  MANAGER	   2
+
+
+OutPut of temp1 
+ENAME	  EMPNO	 JOB	    M_ENAME	M_EMPNO	M_JOB
+BLAKE	  7698	MANAGER	  KING	  7839	PRESIDENT
+CLARK	  7782	MANAGER	  KING	  7839	PRESIDENT
+JONES	  7566	MANAGER	  KING	  7839	PRESIDENT
+ALLEN	  7499	SALESMAN	BLAKE	  7698	MANAGER
+WARD	  7521	SALESMAN	BLAKE	  7698	MANAGER
+MARTIN	7654	SALESMAN	BLAKE	  7698	MANAGER
+TURNER	7844	SALESMAN	BLAKE	  7698	MANAGER
+JAMES	  7900	CLERK	    BLAKE	  7698	MANAGER
+MILLER	7934	CLERK	    CLARK	  7782	MANAGER
+SCOTT	  7788	ANALYST	  JONES	  7566	MANAGER
+FORD	  7902	ANALYST	  JONES	  7566	MANAGER
+ADAMS	  7876	CLERK	    SCOTT	  7788	ANALYST
+SMITH	  7369	CLERK	    FORD	  7902	ANALYST
+KING	  7839	PRESIDENT  	-      	-	    -
