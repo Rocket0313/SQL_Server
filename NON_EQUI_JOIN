@@ -1,0 +1,32 @@
+A Non-Equi Join is a type of SQL join where the join condition does not use the equality operator (=). 
+Instead, it uses other comparison operators such as <, >, <=, >=, <>, or even other conditions that do not involve direct equality.
+
+When to Use Non-Equi Joins:
+Range Joins: When you need to match rows based on a range of values.
+Complex Matching: When the relationship between the tables isn't simply based on equality but involves other conditions.
+Example Scenario: Salary Ranges
+Let's say you have two tables: employees and salary_grades.
+
+employees Table:
+emp_id	emp_name	salary
+101	John	5000
+102	Alice	7000
+103	Bob	12000
+104	Carol	4000
+
+
+salary_grades Table:
+grade	min_salary	max_salary
+A	0	5000
+B	5001	10000
+C	10001	20000
+Using a Non-Equi Join
+If you want to assign each employee to a salary grade based on their salary, you can use a Non-Equi Join:
+
+sql
+Copy code
+
+SELECT e.emp_name, e.salary, s.grade
+FROM employees e
+JOIN salary_grades s
+ON e.salary BETWEEN s.min_salary AND s.max_salary;
