@@ -1,0 +1,55 @@
+1. Introduction
+Aggregate and analytic functions both enable you to do a calculation over many rows.
+Aggregate functions squash the output to one row per group. For example the following counts the total rows in the table. It returns one row:
+
+Syntax:
+select b.*, 
+       count(*) over () total_count 
+from   bricks b;
+
+2. Partition By
+The group by clause splits rows into groups of the same value. For example, the following get the number of rows and total weight for each colour:
+
+select e.*, 
+count(*) over() total_emp, 
+count(*) over(partition by deptno) dept_emp, 
+count(*) over(partition by job) job_emp, 
+count(*) over(partition by job,deptno)job_dept_emp, 
+max(sal) over(partition by job) max_sal_job, 
+sum(sal) over(partition by deptno) sum_sal_dept     
+from emp e;
+
+
+3.  Order By
+The order by clause enables you to compute running totals. For example, the following sorts the rows by brick_id. 
+Then shows the total number of rows and sum of the weights for rows with a brick_id less than or equal to that of the current row:
+
+
+BRICK_ID	COLOUR	SHAPE	WEIGHT
+1	blue	cube	1
+2	blue	pyramid	2
+3	red	cube	1
+4	red	cube	2
+5	red	pyramid	3
+6	green	pyramid	1
+
+Running or consucutive sum using order by 
+
+select b.*, 
+       count(*) over (
+         order by brick_id
+       ) running_total, 
+       sum ( weight ) over (
+         order by brick_id
+       ) running_weight
+from   bricks b;
+
+OUTPUT:
+
+BRICK_ID	COLOUR	SHAPE  	WEIGHT	RUNNING_TOTAL	RUNNING_WEIGHT
+1	          blue	  cube	  1  	1	1
+2	blue	pyramid	2	2	3
+3	red	cube	1	3	4
+4	red	cube	2	4	6
+5	red	pyramid	3	5	9
+6	green	pyramid	1	6	10
